@@ -14,7 +14,10 @@
     </style>
 
     <script src="https://kit.fontawesome.com/9f50e2463f.js" crossorigin="anonymous"></script>
-    <h1>Cadastro</h1>
+
+    <i class="fa-solid fa-cart-shopping" style="color: #ffffff;"></i>
+    <h1>Finalização de Compra</h1>
+    
     <form action="" method="post">
 
         <table id="tabela1">
@@ -45,9 +48,6 @@
         </table>
     </form>
             
-
-    eu acho que vc tem que comitar pra dar certo, mas vamos viewport
-
     <table id="tabela2">
         <tr>
             <th>Produto</th>
