@@ -11,7 +11,7 @@ h1{
     margin-right: 20px;
     margin-bottom: 80px;
     color: white;
-    font-size: 80px;
+    font-size: 50px;
 }
 
 table {
@@ -62,3 +62,8 @@ td {
     border-radius: 1px solid #00bf63;
 }
 
+fa-solid fa-cart-shopping {
+    width: 30%;
+    margin-top: 150px;
+    
+}
