@@ -1,0 +1,16 @@
+{
+    "name": "jordan/crud-produtos",
+    "autoload": {
+        "psr-4": {
+            "Crud\\PDO\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jordan Douglas",
+            "email": "jordandouglas8515@gmail.com"
+        }
+    ],
+    "require": {
+    }
+}
