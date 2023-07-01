@@ -14,8 +14,7 @@
 <a href="/">
     <img src="img/IconeSaida.png">
 </a>
-<form action="/update" method="post">
-    <input type="hidden" value="<?= $produto->id; ?>">
+<form action="/update?id=<?= $produto->id; ?>" method="post">
     <label for="nome">Produto</label><br><br>
     <input type="text" name="nome" id="nome" placeholder="Nome do Produto" value="<?= $produto->nome; ?>"><br><br>
     <label id="preco1" for="nome">Preço</label><br><br>

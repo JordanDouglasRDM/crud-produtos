@@ -67,13 +67,15 @@ class ProdutoRepository
     public function update(Produto $produto): bool
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-        if ($id !== false) {
+        if ($id !== false && $id !== null) {
             $sql = 'UPDATE produtos SET nome = :nome, preco = :preco WHERE id = :id;';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->bindValue(':nome', $produto->nome,);
             $stmt->bindValue(':preco', $produto->preco);
             $result = $stmt->execute();
+        } else {
+            $result = false;
         }
         return $result;
     }

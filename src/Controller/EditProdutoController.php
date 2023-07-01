@@ -13,11 +13,6 @@ class EditProdutoController implements Controller
 
     public function processaRequisicao()
     {
-        $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
-        if ($id === false || $id === null) {
-            header('Location: /?sucesso=0');
-            return;
-        }
         $nome = filter_input(INPUT_POST, 'nome');
         if ($nome === false) {
             header('Location: /?sucesso=0');
