@@ -1,101 +1,42 @@
-body{
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(to bottom, #000, #0000ff);
-    background-repeat: no-repeat;
-
-      
+body {
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(to bottom, #59a0ff, #dad8d8);
 }
 
-#carrinho {
-    margin-top: 20px;
-    margin-left: -5%;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    width: 50px;
-    
-}
-
-h1{
+h1 {
     text-align: center;
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-bottom: 20px;
-    color: white;
-    font-size: 50px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
-table {
-    border-collapse: collapse;
-    width: 90%;
+tbody {
+    background-color: white;
+}
+.table-wrapper {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.table-wrapper table {
     margin: auto;
-    text-align: left;
-    
 }
 
-th {
-    border: 1px solid rgb(0, 0, 160);
-    padding: 8px;
-    text-align: left;
-    color: rgb(0, 0, 160);
-    background-color: #f2f2f2;
-    width: 20%;
+#delete-icon {
+    margin-left: 25%;
 }
 
-td {
-    border: 1px solid rgb(0, 0, 160);
-    padding: 8px;
-    text-align: left;
-    color: rgb(0, 0, 160);
-    background-color: #f2f2f2;
-    width: 20%;
+
+/* Personalizações adicionadas */
+.container {
+    justify-content: center;
 }
 
-#tabela1{
-    margin-top: 20px;
-    border-collapse: collapse;
-    width: 60%;
-    margin-left: 18%;
-}
-#tabela1 td{
-    width: 20%;
+.table-hover tbody tr:hover {
+    background-color: #e6f2ff;
 }
 
-#button1{
-    background-color: #00bf63;
-    margin-top: 20px;
-    margin-left: 42%;
-    padding: 15px 50px;
-    border: none;
-    border-radius: 25px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-    z-index: 1;
-    color:#fff;
-    font-weight: bold;
-}
-   
-#tabela2{
-    margin-top: 5%;
-    margin-bottom: 60px;
-    border-collapse: collapse;
-    width: 90%;
-}
-
-.icones {
-    width: 3%;
-
-}
-
-#ReduzirColuna{
-    width: 20%;
-}
-
-#total{
-    margin-top: 5%;
-    margin-left: -60%;
-    margin-bottom: 2%;
+.table-gradient thead th {
+    background: linear-gradient(to bottom, #0099cc, #006699);
+    color: white;
 }

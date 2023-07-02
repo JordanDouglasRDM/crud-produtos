@@ -11,12 +11,15 @@ class FormProdutoController implements Controller
     }
     public function processaRequisicao()
     {
+        $produtoList = $this->produtoRepository->all();
+
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         $produto = null;
         if ($id !== false && $id !== null) {
-            $produto = $this->produtoRepository->find($id);
+            $produtoSelecionado = $this->produtoRepository->find($id);
         }
-        if ($produto )
-        require_once __DIR__ . '/../../views/edit.php';
+        if ($produtoSelecionado)
+        $acao = '/update?id=' . $id;
+        require_once __DIR__ . '/../../views/initial.php';
     }
 }

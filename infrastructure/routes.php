@@ -10,6 +10,6 @@ return [
   'GET|/' => ProdutoListController::class,
     'POST|/novo' => NewProdutoController::class,
     'GET|/excluir' => DeleteProdutoController::class,
-    'GET|/form' => FormProdutoController::class,
+    'GET|/update' => FormProdutoController::class,
     'POST|/update' => EditProdutoController::class,
 ];
