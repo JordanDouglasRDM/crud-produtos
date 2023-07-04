@@ -13,17 +13,16 @@ class EditProdutoController implements Controller
 
     public function processaRequisicao()
     {
+
         $nome = filter_input(INPUT_POST, 'nome');
-        if ($nome === false) {
-            header('Location: /?sucesso=0');
-            return;
-        }
         $preco = filter_input(INPUT_POST, 'preco', FILTER_VALIDATE_FLOAT);
-        if ($preco === false) {
+        $quant = filter_input(INPUT_POST, 'quant', FILTER_VALIDATE_INT);
+        if (($nome || $preco || $quant) == false || ($nome || $preco || $quant) == null) {
             header('Location: /?sucesso=0');
             return;
         }
-        $produto = new Produto($nome, $preco);
+        $produto = new Produto($nome, $preco, $quant);
+        $produto->setSoma();
         $sucess = $this->produtoRepository->update($produto);
         if ($sucess) {
             header('Location: /?sucesso=1');

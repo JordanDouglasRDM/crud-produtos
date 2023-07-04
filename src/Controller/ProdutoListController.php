@@ -15,6 +15,7 @@ class ProdutoListController implements Controller
         $produtoList = $this->produtoRepository->all();
         $acao = '/novo';
         $nome = null;
+        $calculos = $this->produtoRepository->calculos();
         require_once __DIR__ . '/../../views/initial.php';
     }
 }

@@ -12,10 +12,12 @@ class ProdutoRepository
 
     public function add(Produto $produto): bool
     {
-        $sql = 'INSERT INTO produtos (nome, preco) VALUES (:nome, :preco)';
+        $sql = 'INSERT INTO produtos (nome, preco,quant, soma) VALUES (:nome, :preco, :quant, :soma)';
         $stmt = $this->pdo->prepare($sql);
         $stmt->bindValue(':nome', $produto->nome);
         $stmt->bindValue(':preco', $produto->preco);
+        $stmt->bindValue(':quant', $produto->quant, PDO::PARAM_INT);
+        $stmt->bindValue(':soma', $produto->soma);
 
         $id = $this->pdo->lastInsertId();
         $produto->setId(intval($id));
@@ -49,8 +51,10 @@ class ProdutoRepository
 
     private function hydrateProduto(array $produtosData): Produto
     {
-        $produto = new Produto($produtosData['nome'], $produtosData['preco']);
+        $produto = new Produto($produtosData['nome'], $produtosData['preco'],
+                                $produtosData['quant']);
         $produto->setId($produtosData['id']);
+        $produto->setSoma();
         return $produto;
     }
 
@@ -68,15 +72,34 @@ class ProdutoRepository
     {
         $id = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
         if ($id !== false && $id !== null) {
-            $sql = 'UPDATE produtos SET nome = :nome, preco = :preco WHERE id = :id;';
+            $sql = 'UPDATE produtos SET nome = :nome, preco = :preco, quant = :quant, soma = :soma WHERE id = :id;';
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindValue(':id', $id, PDO::PARAM_INT);
             $stmt->bindValue(':nome', $produto->nome,);
             $stmt->bindValue(':preco', $produto->preco);
+            $stmt->bindValue(':quant', $produto->quant);
+            $stmt->bindValue(':soma', $produto->soma);
             $result = $stmt->execute();
         } else {
             $result = false;
         }
         return $result;
+    }
+
+    public function calculos(): array
+    {
+        $sqlCount = 'SELECT * FROM produtos';
+        $sqlSum = 'SELECT SUM(soma) AS total FROM produtos';
+        $stmt = $this->pdo->query($sqlCount);
+        $cont = $stmt->rowCount();
+
+        $stmt2 = $this->pdo->query($sqlSum);
+        $soma = $stmt2->fetch(PDO::FETCH_ASSOC)['total'];
+        $soma = $soma ?? '0'; //coalacencia nula
+        $soma = number_format($soma, 2,',','.');
+
+        $calculos = [$cont, $soma];
+
+        return $calculos;
     }
 }

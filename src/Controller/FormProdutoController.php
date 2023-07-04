@@ -20,6 +20,7 @@ class FormProdutoController implements Controller
         }
         if ($produtoSelecionado)
         $acao = '/update?id=' . $id;
+        $calculos = $this->produtoRepository->calculos();
         require_once __DIR__ . '/../../views/initial.php';
     }
 }
