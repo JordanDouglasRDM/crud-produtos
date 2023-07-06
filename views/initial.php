@@ -55,7 +55,7 @@
                    value="<?= isset($produtoSelecionado) ? $produtoSelecionado->preco : ''; ?>"
                    aria-label="Username" aria-describedby="basic-addon1">
             <button type="submit"
-                    class="btn btn-success mx-auto"><?= isset($produtoSelecionado) ? 'Atualizar' : 'Incluir'; ?></button>
+                    class="btn btn-<?= isset($produtoSelecionado) ? 'warning' : 'success'; ?> mx-auto"><?= isset($produtoSelecionado) ? 'Atualizar' : 'Incluir'; ?></button>
         </div>
     </form>
 </div>
